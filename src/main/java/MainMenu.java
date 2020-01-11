@@ -1,5 +1,9 @@
+import org.w3c.dom.ls.LSOutput;
+
+import java.util.stream.IntStream;
+
 public class MainMenu {
-    private String menuTitle = "Main Menu";
+    private static String menuTitle = "Main Menu";
     private static String[] menuOptions = {"List minions", "Add a new minion", "Remove minion",
             "Attribute an evil deed to a minion", "Debug dump of minion details", "Exit"};
 
@@ -14,49 +18,80 @@ public class MainMenu {
 //        menuOptions[5] = "Exit";
 //    }
 
-    public void printMenuTitle(){
-        boolean halfDrawn = false;
-        int length = menuTitle.length();
-        halfDrawn = rectangleDrawer(halfDrawn, length);
-        System.out.print(menuTitle);
-        rectangleDrawer(halfDrawn, length);
+//    public void printMenuTitle() {
+//        boolean halfDrawn = false;
+//        int length = menuTitle.length();
+//        halfDrawn = rectangleDrawer(halfDrawn, length);
+//        System.out.print(menuTitle);
+//        rectangleDrawer(halfDrawn, length);
+//    }
+//
+//    public boolean rectangleDrawer(boolean halfDrawn, int length) {
+//        int starIndent = 4;
+//        String floorAndCeiling = new String(new char[length + starIndent]).replace('\0', '*');
+//        if (!halfDrawn) {
+//            String ceilingAndLWall = floorAndCeiling.substring(0, length + starIndent) + "\n* ";
+//            System.out.print(ceilingAndLWall);
+//            halfDrawn = true;
+//        } else {
+//            String rWallAndFloor = " *\n" + floorAndCeiling.substring(0, length + starIndent);
+//            System.out.println(rWallAndFloor);
+//        }
+//        return halfDrawn;
+//    }
+
+    public void drawTitleLine()
+    {
+
+        final int starIndent = 4;
+//        IntStream.range(0,menuTitle.length() + starIndent).forEach(i -> System.out.print('*'));
+
+        //int totalcount =
+        IntStream.range(0,menuTitle.length() + starIndent)
+                .map(i -> i * i)
+                .map(i->++i)
+                .forEach(System.out::println);
+        //System.out.println(totalcount);
+//        for (int i = 0; i < menuTitle.length() + starIndent; i++){
+//            System.out.print('*');
+//        }
+        // READ ABOUT LAMBDA
+        System.out.println();
     }
 
-    public boolean rectangleDrawer(boolean halfDrawn, int length){
-        int starIndent = 4;
-        String floorAndCeiling = new String(new char[length + starIndent]).replace('\0' , '*'); //https://stackoverflow.com/questions/2804827/create-a-string-with-n-characters
-        if (!halfDrawn) {
-            String ceilingAndLWall = floorAndCeiling.substring(0, length + starIndent) + "\n* "; // https://stackoverflow.com/questions/6952363/replace-a-character-at-a-specific-index-in-a-string
-            System.out.print(ceilingAndLWall);
-            halfDrawn = true;
-        }
-        else{
-            String rWallAndFloor = " *\n" + floorAndCeiling.substring(0, length + starIndent);
-            System.out.println(rWallAndFloor);
-        }
-        return halfDrawn;
+    public void drawTitle (){
+        System.out.println("* " + menuTitle + " *");
     }
 
-    public void printMenuOptions(){
-        printMenuTitle();
-        for(int i = 0; i < menuOptions.length; i++) {
+    public void drawTitleBanner(){
+        drawTitleLine();
+        drawTitle();
+        drawTitleLine();
+    }
+
+    public void printMenuOptions() {
+        drawTitleBanner();
+//        printMenuTitle();
+        for (int i = 0; i < menuOptions.length; i++) {
             System.out.println((i + 1) + ". " + menuOptions[i]);
         }
     }
 
+    //https://stackoverflow.com/questions/2804827/create-a-string-with-n-characters
 
-    public static void initialCheck(int input){
-        if (input < 1 || input > menuOptions.length){
-            System.out.println("Please enter a number between 1 and 6, thank you");
-        }
-        else{
+    // https://stackoverflow.com/questions/6952363/replace-a-character-at-a-specific-index-in-a-string
+
+    public static void initialCheck(int input) {
+        if (input < 1 || input > menuOptions.length) {
+            System.out.println("Error: Please enter a number between 1 and 6, thank you");
+        } else {
             optionChosen(input);
         }
     }
 
-    public static void optionChosen(int input){
+    public static void optionChosen(int input) {
         System.out.println("AHAHAHAHAHAHHAHAHAHAH\n\n\n\n\n\n\n\n\n");
-        switch (input){
+        switch (input) {
             case 1:
                 Minion.listMinions();
 

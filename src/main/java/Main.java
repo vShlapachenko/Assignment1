@@ -9,27 +9,28 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String args[]){
+    public static void main(String[] args) {
+
+        MainMenu utilVar = new MainMenu (0);
+
+        utilVar.printMenuOptions();
 
         List<Minion> minions = new ArrayList<>();
 
-        minions.add(new Minion(0,1.73, "Olin"));
+        Minion.addNewMinion(minions);
 
-        System.out.println("first is: " + minions.get(0));
+//        minions.add(new Minion(0,1.73,"oleg"));
+//
+//        minions.add(new Minion(0,1.73,"oleg"));
+//
+//        minions.add(new Minion(0,1.73,"oleg"));
+
+        Scanner input = new Scanner(System.in);
+
+        utilVar.setUserInput(input.nextInt());
+
+        utilVar.initialCheck(utilVar.getUserInput(), minions);
 
 
-        Scanner input = new Scanner (System.in);
-
-        int userInput = input.nextInt();
-
-        MainMenu.initialCheck(userInput);
-
-        MainMenu menu = new MainMenu();
-
-        menu.printMenuOptions();
     }
-
-
-
-
 }

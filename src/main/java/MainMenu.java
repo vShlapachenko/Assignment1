@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.IntStream;
 
 public class MainMenu {
@@ -35,26 +36,36 @@ public class MainMenu {
     }
 
 
-    public void initialCheck(int input, List<Minion> minions) {
-        if (input < 1 || input > menuOptions.length) {
+    public boolean initialCheck(int input, List<Minion> minions) {
+        while (input < 1 || input > menuOptions.length) {
+            Scanner newInput = new Scanner(System.in);
             System.out.println("Error: Please enter a number between 1 and 6, thank you");
-        } else {
-            optionChosen(input, minions);
+            input = newInput.nextInt();
         }
+        return optionChosen(input, minions);
+
     }
 
-    public void optionChosen(int input, List<Minion> minions) {
+    public boolean optionChosen(int input, List<Minion> minions) {
         Minion utilVar = new Minion();
         switch (input) {
             case 1:
-                utilVar.listMinionsTitle();
                 utilVar.printMinions(minions);
                 break;
             case 2:
-                //utilVar.addNewMinion();
+                utilVar.addNewMinion(minions);
+                break;
             case 3:
-
+            case 4:
+                utilVar.selectMinionOrCancel(input, minions);
+                break;
+            case 5:
+                utilVar.debugDump(minions);
+                break;
+            case 6:
+                return true;
         }
+        return false;
     }
 
     public int getUserInput() {

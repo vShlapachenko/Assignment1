@@ -1,3 +1,8 @@
+/*
+        MainMenu class is responsible for showing menu to the user every time user wants to do something
+        with array of minions, also takes care with inappropriate input for the menu
+ */
+
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.IntStream;
@@ -39,7 +44,7 @@ public class MainMenu {
     public boolean initialCheck(int input, List<Minion> minions) {
         while (input < 1 || input > menuOptions.length) {
             Scanner newInput = new Scanner(System.in);
-            System.out.println("Error: Please enter a number between 1 and 6, thank you");
+            System.out.println("Error: Please enter a number between 1 and 6");
             input = newInput.nextInt();
         }
         return optionChosen(input, minions);

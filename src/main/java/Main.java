@@ -1,3 +1,7 @@
+/*
+*    Main class creates ArrayList of minions which will be filled by using MainMenu and Minion classes
+*    main purpose of Main class is to give info from the user to other classes
+ */
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

@@ -1,3 +1,7 @@
+/*
+    Minion class takes care of commands retrieved from MainMenu class, checks whether they are appropriate
+    if they are Minion class implements them
+ */
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.IntStream;
@@ -37,10 +41,6 @@ public class Minion {
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     @Override
